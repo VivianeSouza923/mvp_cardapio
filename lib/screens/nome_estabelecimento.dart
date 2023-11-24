@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvpcard/screens/bemvindo.dart';
 
 class Client extends StatelessWidget {
   const Client({Key? key}) : super(key: key);
@@ -82,6 +83,11 @@ class NomeEstabelecimento extends StatelessWidget {
         
         onPressed: () {
           // Adicione aqui as ações que você deseja executar quando o botão for pressionado
+          Navigator.push(context,
+           MaterialPageRoute(
+            builder: (context) => const BemVindo(),
+            ),
+            );
         },
         color: const Color(0xffFFB063),
         elevation: 0,

@@ -33,6 +33,8 @@ class BemVindo extends StatelessWidget {
             padding: EdgeInsets.only(top: 80, left: 43, right: 43),
             child: Text(
               "Bem vindo ao Cardápio Web,\ncadastre as mesas, os QR code de\n acesso serão gerados\n automaticamente na área Adesivos.",
+              textAlign: TextAlign.center,
+
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 color: Color(0xff000000),
@@ -42,29 +44,24 @@ class BemVindo extends StatelessWidget {
               ),
             ),
           ),
+
+
           Padding(
-            padding: EdgeInsets.only(top: 37.0, left: 44, right: 46),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
-                  borderSide: BorderSide(
-                    color: Color(0xffB8C2C8),
-                  ),
-                ),
-                hintText: "Nome",
-                hintStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 17,
-                  letterSpacing: -0.41,
-                  fontFamily: 'Inter',
-                  color: Color(0xffB8C2C8),
-                ),
+            padding: EdgeInsets.only(top: 34, left: 43, right: 43),
+            child: Text(
+              "Quantas mesas tem o seu\n estabelecimento?",
+              textAlign: TextAlign.center,
+
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Color(0xff000000),
+                fontFamily: 'Inter',
+                fontSize: 17,
+                letterSpacing: 0.36,
               ),
             ),
           ),
+          
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 112, left: 144, right: 20),
