@@ -62,6 +62,21 @@ flutter:
   assets:
      - assets/images/cardapio_web.png
      - assets/images/cutlery.png
+     - assets/images/MESA1.png
+     - assets/images/mesa2.png
+     - assets/images/mesa3.png
+     - assets/images/mesa4.png
+     - assets/images/mesa5.png
+     - assets/images/mesa6.png
+     - assets/images/mesa7.png
+     - assets/images/mesa8.png
+     - assets/images/mesa9.png
+     - assets/images/mesa10.png
+     - assets/images/mesa11.png
+     - assets/images/mesa12.png
+     - assets/images/mesa13.png
+     - assets/images/mesa14.png
+     - assets/images/mesa15.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

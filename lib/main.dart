@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvpcard/screens/bemvindo.dart';
 import 'package:mvpcard/screens/nome_estabelecimento.dart';
 
 void main() {
