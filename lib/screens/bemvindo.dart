@@ -75,31 +75,19 @@ class _BemVindoState extends State<BemVindo> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 27, left: 122),
+                  padding: const EdgeInsets.only(top: 27, left: 100),
                   child: Row(
                     children: [
-                      Container(
-                        width: 24,
-                        height: 24,
-                        decoration: const BoxDecoration(
-                          color: Color(0xff000000),
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              contadorController.decrementar();
-                            });
-                          },
-                          icon: const Align(
-                            alignment: Alignment.center,
-                            child: Icon(
-                              Icons.remove,
-                              color: Color(0xffFFFFFF),
-                              size: 14,
-                              weight: 500,
-                            ),
-                          ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            contadorController.decrementar();
+                          });
+                        },
+                        icon: Image.asset(
+                          'assets/images/menos.png',
+                          width: 24,
+                          height: 24,
                         ),
                       ),
                       const SizedBox(
@@ -131,28 +119,16 @@ class _BemVindoState extends State<BemVindo> {
                       const SizedBox(
                         width: 20,
                       ),
-                      Container(
-                        width: 24,
-                        height: 24,
-                        decoration: const BoxDecoration(
-                          color: Color(0xff000000),
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              contadorController.incrementar();
-                            });
-                          },
-                          icon: const Align(
-                            alignment: Alignment.topCenter,
-                            child: Icon(
-                              Icons.add,
-                              color: Color(0xffFFFFFF),
-                              size: 14,
-                              weight: 500,
-                            ),
-                          ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            contadorController.incrementar();
+                          });
+                        },
+                        icon: Image.asset(
+                          'assets/images/mais.png',
+                          width: 24,
+                          height: 24,
                         ),
                       ),
                     ],
@@ -168,7 +144,7 @@ class _BemVindoState extends State<BemVindo> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  const TotalMesas(),
+              builder: (context) => const TotalMesas(),
             ),
           );
         },
