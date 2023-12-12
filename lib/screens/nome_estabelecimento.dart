@@ -13,8 +13,18 @@ class Client extends StatelessWidget {
   }
 }
 
-class NomeEstabelecimento extends StatelessWidget {
+class NomeEstabelecimento extends StatefulWidget {
   const NomeEstabelecimento({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _NomeEstabelecimentoState createState() => _NomeEstabelecimentoState();
+}
+
+class _NomeEstabelecimentoState extends State<NomeEstabelecimento> {
+  // ignore: prefer_final_fields
+  TextEditingController _nomeEstabelecimentoController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +46,8 @@ class NomeEstabelecimento extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 140, left: 95, right: 94.94),
+                padding:
+                    const EdgeInsets.only(top: 140, left: 95, right: 94.94),
                 child: Image.asset(
                   'assets/images/cardapio_web.png',
                   width: 200.6,
@@ -57,10 +68,11 @@ class NomeEstabelecimento extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 37.0, left: 44, right: 46),
+              Padding(
+                padding: const EdgeInsets.only(top: 37.0, left: 44, right: 46),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: _nomeEstabelecimentoController,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(20),
@@ -86,7 +98,13 @@ class NomeEstabelecimento extends StatelessWidget {
       ),
       floatingActionButton: MaterialButton(
         onPressed: () {
+          // Obtém o nome do estabelecimento do controlador
+          String nomeEstabelecimento = _nomeEstabelecimentoController.text;
+
           // Adicione aqui as ações que você deseja executar quando o botão for pressionado
+          // ignore: avoid_print
+          print("Nome do estabelecimento: $nomeEstabelecimento");
+
           Navigator.push(
             context,
             MaterialPageRoute(

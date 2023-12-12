@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvpcard/screens/mesasocupadas_notificadas.dart';
 import 'package:mvpcard/screens/nome_estabelecimento.dart';
 
 void main() {
@@ -13,10 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-
       debugShowCheckedModeBanner: false,
-      home: TotalMesasNotOcu(),
-    
+      home: NomeEstabelecimento(),
     );
   }
 }

@@ -79,6 +79,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
             height: 8,
           ),
           Expanded(
+
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -86,7 +87,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                     height: 1.0,
                     width: double
                         .infinity, // Define a altura como infinita para estender ao longo da altura disponível
-                    color: Color(0xffD4DADE), // Cor da barra vertical
+                    color: const Color(0xffD4DADE), // Cor da barra vertical
                   ),
                   const SizedBox(
                     height: 8,
@@ -150,7 +151,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
@@ -196,7 +197,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
@@ -242,7 +243,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
@@ -288,7 +289,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Row(
@@ -334,7 +335,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                 ],
@@ -345,7 +346,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
       ),
       bottomNavigationBar: BottomAppBar(
         height: 64,
-        color: Color(0xffF5F5F5),
+        color: const Color(0xffF5F5F5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

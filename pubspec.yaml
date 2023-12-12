@@ -62,7 +62,7 @@ flutter:
   assets:
      - assets/images/cardapio_web.png
      - assets/images/cutlery.png
-     - assets/images/MESA1.png
+     - assets/images/mesa1.png
      - assets/images/mesa2.png
      - assets/images/mesa3.png
      - assets/images/mesa4.png

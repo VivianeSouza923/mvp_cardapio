@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvpcard/functions/increment_decrement.dart';
+import 'package:mvpcard/functions/mesa_controller.dart';
 import 'package:mvpcard/screens/total_mesas.dart';
 
 class BemVindo extends StatefulWidget {
@@ -12,6 +13,7 @@ class BemVindo extends StatefulWidget {
 
 class _BemVindoState extends State<BemVindo> {
   ContadorController contadorController = ContadorController();
+  int contagemFinal = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -141,10 +143,14 @@ class _BemVindoState extends State<BemVindo> {
       ),
       floatingActionButton: MaterialButton(
         onPressed: () {
+          contagemFinal = contadorController.contador;
+
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const TotalMesas(),
+              builder: (context) => TotalMesas(
+                  contagemFinal: contagemFinal,
+                  mesaController: MesaController()),
             ),
           );
         },
