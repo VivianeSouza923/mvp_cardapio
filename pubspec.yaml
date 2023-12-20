@@ -93,6 +93,9 @@ flutter:
      - assets/images/mesa_ocupada8.png
      - assets/images/mesa_ocupada9.png
      - assets/images/mesa_ocupada11.png
+     - assets/images/containerPon.png
+     - assets/images/up.png
+     - assets/images/bottom_upload.png
 
   #   - images/a_dot_ham.jpeg
 
@@ -112,6 +115,11 @@ flutter:
        fonts:
          - asset: assets/fonts/static/Inter-Regular.ttf
          - asset: assets/fonts/static/Inter-Bold.ttf
+
+     - family: Inter
+       fonts:
+         - asset: assets/fonts/Figtree-Regular.ttf
+         - asset: assets/fonts/Figtree-Bold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
