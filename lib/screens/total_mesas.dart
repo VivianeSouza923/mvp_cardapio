@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:mvpcard/functions/mesa_controller.dart';
+import 'package:mvpcard/functions/increment_decrement.dart';
+//import 'package:mvpcard/functions/mesa_controller.dart';
 
 class TotalMesas extends StatefulWidget {
   final int contagemFinal;
+  final List mesaImages; 
 
-  const TotalMesas({Key? key, required this.contagemFinal, required MesaController mesaController}) : super(key: key);
+  const TotalMesas({Key? key, required this.contagemFinal, required this.mesaImages}) : super(key: key);
 
   @override
   _TotalMesasState createState() => _TotalMesasState();
 }
 
 class _TotalMesasState extends State<TotalMesas> {
-  List<bool> mesasExcluir =
-      List.generate(100, (index) => false); // Use o tamanho adequado
+ // MesaController mesaController = MesaController(); // Adicione esta linha
+
+  ContadorController contadorController = ContadorController();
 
   @override
   Widget build(BuildContext context) {
-    List<AssetImage> mesaImages = List.generate(
-      widget.contagemFinal,
-      (index) => AssetImage('assets/images/mesa${index + 1}.png'),
-    );
+     print('Caminhos das imagens:');
+  for (int index = 0; index < widget.contagemFinal; index++) {
+    print('mesa${index + 1}.png');
+  }
+
+  List<AssetImage> mesaImages = List.generate(
+    widget.contagemFinal,
+    (index) => AssetImage('assets/images/mesa${index + 1}.png'),
+  );
+
     return Scaffold(
       body: Column(
         children: [
@@ -42,18 +51,8 @@ class _TotalMesasState extends State<TotalMesas> {
               ),
               GestureDetector(
                 onTap: () {
-                  // Excluir mesas selecionadas
-                  for (int i = 0; i < mesasExcluir.length; i++) {
-                    if (mesasExcluir[i]) {
-    
-                      print("Mesa excluída: $i");
-                    }
-                  }
-                  // Reinicia a lista de exclusões
-                  setState(() {
-                    mesasExcluir =
-                        List.generate(widget.contagemFinal, (index) => false);
-                  });
+                   excluirMesa(0);
+
                 },
                 child: Ink.image(
                   image: const AssetImage('assets/images/lixeira.png'),
@@ -145,20 +144,12 @@ class _TotalMesasState extends State<TotalMesas> {
                         const SizedBox(height: 16),
                         Row(
                           children: [
-                            for (int j = 0;
-                                j < 3 && i + j < mesaImages.length;
-                                j++)
+                            for (int j = 0; j < 3 && i + j < mesaImages.length; j++)
                               Padding(
-                                padding:
-                                    EdgeInsets.only(left: j == 0 ? 29.0 : 24.0),
+                                padding: EdgeInsets.only(left: j == 0 ? 29.0 : 24.0),
                                 child: GestureDetector(
                                   onTap: () {
-                                    if (mesasExcluir[i + j]) {
-                                      setState(() {
-                                        mesasExcluir[i + j] =
-                                            !mesasExcluir[i + j];
-                                      });
-                                    }
+                                    excluirMesa(i + j);
                                   },
                                   child: Ink.image(
                                     image: mesaImages[i + j],
@@ -213,10 +204,21 @@ class _TotalMesasState extends State<TotalMesas> {
                 width: 59,
                 height: 49,
               ),
+           
+
             ),
           ],
         ),
       ),
     );
   }
+
+  void excluirMesa(int index) {
+    setState(() {
+      if (index >= 0 && index < widget.mesaImages.length) {
+        widget.mesaImages.removeAt(index);
+      }
+    });
+}
+
 }

@@ -16,7 +16,7 @@ class _FazerUploadState extends State<FazerUpload> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 63),
+          SizedBox(height: 27),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 153),
             child: Text(
@@ -30,7 +30,7 @@ class _FazerUploadState extends State<FazerUpload> {
               ),
             ),
           ),
-          SizedBox(height: 141,),
+          SizedBox(height: 131,),
 
           Container(
             width: 342,
@@ -65,9 +65,75 @@ class _FazerUploadState extends State<FazerUpload> {
 
             
           ),
+
+
+          SizedBox(height: 38,),
+
+
+          Container(
+            width: 342,
+            height: 48,
+            
+            decoration: BoxDecoration(
+              color: Color(0xffFFB063),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          
+
+            child: TextButton(onPressed: () {},
+          
+             child: Text("Salvar",
+             style: TextStyle(
+              fontFamily: 'Inter',
+              color: Color(0xff000000),
+              fontSize: 15,
+
+             ),),),
+          ),
+
+          SizedBox(height: 25,)
           
         ],
       ),
+
+       bottomNavigationBar: BottomAppBar(
+        height: 64,
+        color: const Color(0xffF5F5F5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () {},
+              child: Ink.image(
+                image: const AssetImage('assets/images/bottom1.png'),
+                fit: BoxFit.cover,
+                width: 59,
+                height: 49,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Ink.image(
+                image: const AssetImage('assets/images/bottom2.png'),
+                fit: BoxFit.cover,
+                width: 41,
+                height: 49,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Ink.image(
+                image: const AssetImage('assets/images/bottom3.png'),
+                fit: BoxFit.cover,
+                width: 59,
+                height: 49,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
+
+    
   }
 }
