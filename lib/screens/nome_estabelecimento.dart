@@ -101,7 +101,6 @@ class _NomeEstabelecimentoState extends State<NomeEstabelecimento> {
           // Obtém o nome do estabelecimento do controlador
           String nomeEstabelecimento = _nomeEstabelecimentoController.text;
 
-          // Adicione aqui as ações que você deseja executar quando o botão for pressionado
           // ignore: avoid_print
           print("Nome do estabelecimento: $nomeEstabelecimento");
 

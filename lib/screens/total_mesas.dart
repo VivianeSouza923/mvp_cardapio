@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:mvpcard/functions/increment_decrement.dart';
+
+import '../functions/add_mesa.dart';
+import '../functions/remover_mesas.dart';
 //import 'package:mvpcard/functions/mesa_controller.dart';
 
 class TotalMesas extends StatefulWidget {
   final int contagemFinal;
-  final List mesaImages; 
+  final List mesaImages;
 
-  const TotalMesas({Key? key, required this.contagemFinal, required this.mesaImages}) : super(key: key);
+  const TotalMesas(
+      {Key? key, required this.contagemFinal, required this.mesaImages})
+      : super(key: key);
 
   @override
   _TotalMesasState createState() => _TotalMesasState();
 }
 
 class _TotalMesasState extends State<TotalMesas> {
- // MesaController mesaController = MesaController(); // Adicione esta linha
+  // MesaController mesaController = MesaController(); // Adicione esta linha
 
   ContadorController contadorController = ContadorController();
 
   @override
   Widget build(BuildContext context) {
-     print('Caminhos das imagens:');
-  for (int index = 0; index < widget.contagemFinal; index++) {
-    print('mesa${index + 1}.png');
-  }
+    print('Caminhos das imagens:');
+    for (int index = 0; index < widget.contagemFinal; index++) {
+      print('mesa${index + 1}.png');
+    }
 
-  List<AssetImage> mesaImages = List.generate(
-    widget.contagemFinal,
-    (index) => AssetImage('assets/images/mesa${index + 1}.png'),
-  );
+    List<AssetImage> mesaImages = List.generate(
+      widget.contagemFinal,
+      (index) => AssetImage('assets/images/mesa${index + 1}.png'),
+    );
 
     return Scaffold(
       body: Column(
@@ -49,28 +54,49 @@ class _TotalMesasState extends State<TotalMesas> {
               const SizedBox(
                 width: 24,
               ),
-              GestureDetector(
-                onTap: () {
-                   excluirMesa(0);
-
-                },
-                child: Ink.image(
-                  image: const AssetImage('assets/images/lixeira.png'),
-                  fit: BoxFit.cover,
-                  width: 24,
-                  height: 24,
+              CircleAvatar(
+                radius: 25,
+                backgroundColor: Colors.transparent,
+                child: Center(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.delete_outline,
+                      color: Color(0xff1C1B1F),
+                    ),
+                    iconSize: 24,
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (_) {
+                          return const RemoveTablesModal();
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(
                 width: 286,
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Ink.image(
-                  image: const AssetImage('assets/images/adicionar.png'),
-                  fit: BoxFit.cover,
-                  width: 32,
-                  height: 32,
+              CircleAvatar(
+                radius: 16,
+                backgroundColor: const Color(0xFFFFB063),
+                child: Center(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.add,
+                      color: Colors.black,
+                    ),
+                    iconSize: 14,
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (_) {
+                          return const AddTablesModal();
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
@@ -144,9 +170,12 @@ class _TotalMesasState extends State<TotalMesas> {
                         const SizedBox(height: 16),
                         Row(
                           children: [
-                            for (int j = 0; j < 3 && i + j < mesaImages.length; j++)
+                            for (int j = 0;
+                                j < 3 && i + j < mesaImages.length;
+                                j++)
                               Padding(
-                                padding: EdgeInsets.only(left: j == 0 ? 29.0 : 24.0),
+                                padding:
+                                    EdgeInsets.only(left: j == 0 ? 29.0 : 24.0),
                                 child: GestureDetector(
                                   onTap: () {
                                     excluirMesa(i + j);
@@ -204,8 +233,6 @@ class _TotalMesasState extends State<TotalMesas> {
                 width: 59,
                 height: 49,
               ),
-           
-
             ),
           ],
         ),
@@ -219,6 +246,5 @@ class _TotalMesasState extends State<TotalMesas> {
         widget.mesaImages.removeAt(index);
       }
     });
-}
-
+  }
 }

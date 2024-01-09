@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mvpcard/screens/fazer_upload_cardapio.dart';
-import 'package:mvpcard/screens/nome_estabelecimento.dart';
+import 'package:mvpcard/screens/mesasocupadas_notificadas.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NomeEstabelecimento(),
+      home: TotalMesasNotOcu(mesaImages: const []),
     );
   }
 }

@@ -149,7 +149,7 @@ class _BemVindoState extends State<BemVindo> {
             context,
             MaterialPageRoute(
               builder: (context) => TotalMesas(
-                  contagemFinal: contagemFinal, mesaImages: [],
+                  contagemFinal: contagemFinal, mesaImages: const [],
              ),
             ),
           );

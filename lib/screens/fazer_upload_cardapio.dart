@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mvpcard/functions/increment_decrement.dart';
-import 'package:mvpcard/functions/mesa_controller.dart';
-import 'package:mvpcard/screens/total_mesas.dart';
 
 class FazerUpload extends StatefulWidget {
   const FazerUpload({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _FazerUploadState createState() => _FazerUploadState();
 }
 
@@ -16,9 +14,9 @@ class _FazerUploadState extends State<FazerUpload> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 27),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 153),
+          const SizedBox(height: 27),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 153),
             child: Text(
               "Cardápio",
               style: TextStyle(
@@ -30,7 +28,7 @@ class _FazerUploadState extends State<FazerUpload> {
               ),
             ),
           ),
-          SizedBox(height: 131,),
+          const SizedBox(height: 131,),
 
           Container(
             width: 342,
