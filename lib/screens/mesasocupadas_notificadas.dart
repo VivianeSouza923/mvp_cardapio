@@ -9,13 +9,21 @@ class TotalMesasNotOcu extends StatefulWidget {
   //final int contagemFinal;
   final List mesaImages;
 
-  TotalMesasNotOcu({Key? key, required this.mesaImages}) : super(key: key);
+  TotalMesasNotOcu({
+    Key? key,
+    required List mesaImages,
+  })  : mesaImages = List.from(mesaImages), // Crie uma cópia mutável da lista
+        super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TotalMesasNotOcuState createState() => _TotalMesasNotOcuState();
 }
 
 class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
+  int mesaTocadaIndex = -1;
+  String novaImagem = '';
+
   // MesaController mesaController = MesaController(); // Adicione esta linha
 
   ContadorController contadorController = ContadorController();
@@ -95,8 +103,8 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
           Padding(
             padding: const EdgeInsets.only(left: 33.0, right: 83),
             child: RichText(
-              text: TextSpan(
-                style: const TextStyle(
+              text: const TextSpan(
+                style: TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 17,
                   fontWeight: FontWeight.w400,
@@ -104,12 +112,12 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                   color: Color(0xff2F4858),
                 ),
                 children: [
-                  const TextSpan(
+                  TextSpan(
                     text: "Total de mesas cadastradas: ",
                   ),
                   TextSpan(
                     text: "15",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Color(0xffFFB063),
                       fontSize: 24,
@@ -153,255 +161,266 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                     height: 16,
                   ),
                   for (int i = 0; i < 1; i += 3)
-                    Column(
-                      children: [
-                        const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                _exibirPopup(context);
-                              },
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_notificacao1.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                    for (int j = 0; j < 1; j++)
+                      Column(
+                        children: [
+                          const SizedBox(height: 16),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_notificacao4.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    mesaTocadaIndex = 0;
+                                  });
+                                  _exibirPopup(context);
+                                },
+                                child: Ink.image(
+                                  image: AssetImage(
+                                    novaImagem.isNotEmpty
+                                        ? novaImagem
+                                        : 'assets/images/mesa_notificacao1.png',
+                                  ),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_notificacao10.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 29,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada2.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              InkWell(
+                                onTap: () {
+                                  _exibirPopup(context);
+                                },
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_notificacao4.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada3.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada5.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              InkWell(
+                                onTap: () {
+                                  _exibirPopup(context);
+                                },
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_notificacao10.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 29,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada8.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                width: 29,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada9.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada2.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa_ocupada11.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 29,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image:
-                                    const AssetImage('assets/images/mesa6.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada3.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image:
-                                    const AssetImage('assets/images/mesa7.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa12.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada5.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 29,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa13.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                width: 29,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa14.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada8.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Ink.image(
-                                image: const AssetImage(
-                                    'assets/images/mesa15.png'),
-                                fit: BoxFit
-                                    .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
-                                width: 95, // Largura do botão
-                                height: 95, // Altura do botão
+                              const SizedBox(
+                                width: 24,
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada9.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa_ocupada11.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                width: 29,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa6.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa7.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa12.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                width: 29,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa13.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa14.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Ink.image(
+                                  image: const AssetImage(
+                                      'assets/images/mesa15.png'),
+                                  fit: BoxFit
+                                      .cover, // Pode ajustar para BoxFit.fill, BoxFit.contain, etc.
+                                  width: 95, // Largura do botão
+                                  height: 95, // Altura do botão
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                   const SizedBox(
                     height: 16,
                   ),
@@ -452,45 +471,93 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
 
   // Função para exibir o popup
   void _exibirPopup(BuildContext context) {
-    showModalBottomSheet(
+    showDialog(
       context: context,
-      builder: (BuildContext builder) {
-        return Container(
-          color: Color(0xffF5F5F5),
-          height: 140,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Quer liberar esta mesa?',
-                style: TextStyle(
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          // ignore: sized_box_for_whitespace
+          content: Container(
+            height: 100,
+            width: 280,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Quer liberar esta mesa?',
+                  style: TextStyle(
                     fontSize: 20,
                     fontFamily: 'FigTree',
                     fontWeight: FontWeight.w700,
-                    letterSpacing: -0.41),
-              ),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
+                    letterSpacing: -0.41,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(const Color(0xffB8C2C8)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                      child: const Text(
                         "Não",
                         style: TextStyle(
-                            color: Color(0xff010D0D),
-                            fontFamily: 'FigTree',
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            letterSpacing: -0.41),
+                          color: Color(0xff010D0D),
+                          fontFamily: 'FigTree',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: -0.41,
+                        ),
                       ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        if (mesaTocadaIndex != -1 &&
+                            mesaTocadaIndex < widget.mesaImages.length) {
+                          if (widget.mesaImages.isNotEmpty) {
+                            setState(() {
+                              novaImagem = 'assets/images/mesa1.png';
+                              // Atualiza a nova imagem conforme necessário
+                            });
+                          }
+                        }
+                        Navigator.pop(context);
+                      },
                       style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all(Color(0xffB8C2C8)),
-                              side:MaterialStateBorderSide.resolveWith((states) => null)
-                              ),
-                              )
-                ],
-              )
-            ],
+                        backgroundColor:
+                            MaterialStateProperty.all(const Color(0xffFFB063)),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        "Sim",
+                        style: TextStyle(
+                          color: Color(0xff010D0D),
+                          fontFamily: 'FigTree',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: -0.41,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },

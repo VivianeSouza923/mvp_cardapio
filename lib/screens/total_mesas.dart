@@ -14,6 +14,7 @@ class TotalMesas extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TotalMesasState createState() => _TotalMesasState();
 }
 
@@ -24,8 +25,10 @@ class _TotalMesasState extends State<TotalMesas> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_print
     print('Caminhos das imagens:');
     for (int index = 0; index < widget.contagemFinal; index++) {
+      // ignore: avoid_print
       print('mesa${index + 1}.png');
     }
 
