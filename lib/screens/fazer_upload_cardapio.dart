@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
-
 class FazerUpload extends StatefulWidget {
   const FazerUpload({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _FazerUploadState createState() => _FazerUploadState();
 }
 
 class _FazerUploadState extends State<FazerUpload> {
+  bool isPdfUploaded = false; // Adicionado para rastrear o status do upload
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,92 +31,97 @@ class _FazerUploadState extends State<FazerUpload> {
             ),
           ),
           const SizedBox(height: 131,),
-
-          // ignore: sized_box_for_whitespace
+          
           Container(
             width: 342,
             height: 424,
-
             child: Stack(
               children: [
-                Image.asset('assets/images/containerPon.png',
-            fit: BoxFit.cover,),
+                Image.asset(
+                  'assets/images/containerPon.png',
+                  fit: BoxFit.cover,
+                ),
 
-            Positioned(
-              top: 91,
-              left: 121,
-              child: Image.asset('assets/images/up.png',
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,),
-              
-              ),
+                Positioned(
+                  top: 91,
+                  left: 121,
+                  child: Image.asset(
+                    'assets/images/up.png',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
 
-     Positioned(
-  top: 212,
-  left: 18,
-  child: InkWell(
-    onTap: () async {
-      // Use o FilePicker para obter um arquivo PDF
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf'],
-      );
+                // Adicionado um ícone para indicar o upload do PDF
+                if (isPdfUploaded)
+                  Positioned(
+                    top: 50,
+                    left: 130,
+                    child: Icon(
+                      Icons.picture_as_pdf,
+                      size: 40,
+                      color: Colors.green,
+                    ),
+                  ),
 
-      if (result != null && result.files.isNotEmpty) {
-        // O arquivo PDF está disponível em result.files[0]
-        var pdfFile = result.files.single;
+                Positioned(
+                  top: 212,
+                  left: 18,
+                  child: InkWell(
+                    onTap: () async {
+                      FilePickerResult? result = await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf'],
+                      );
 
-        // Adicione a lógica para lidar com o arquivo PDF aqui
-        print('Caminho do arquivo PDF: ${pdfFile.path}');
-      }
-    },
-    child: Image.asset(
-      'assets/images/bottom_upload.png',
-      width: 306,
-      height: 48,
-      fit: BoxFit.cover,
-    ),
-  ),
-),
-
+                      if (result != null && result.files.isNotEmpty) {
+                        setState(() {
+                          isPdfUploaded = true; // Atualiza o status do upload
+                        });
+                        // Restante do seu código...
+                      }
+                    },
+                    child: Image.asset(
+                      'assets/images/bottom_upload.png',
+                      width: 306,
+                      height: 48,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ],
             ),
-
-            
           ),
 
-
           const SizedBox(height: 38,),
-
 
           Container(
             width: 342,
             height: 48,
-            
             decoration: BoxDecoration(
               color: const Color(0xffFFB063),
               borderRadius: BorderRadius.circular(10),
             ),
-          
-
-            child: TextButton(onPressed: () {},
-          
-             child: const Text("Salvar",
-             style: TextStyle(
-              fontFamily: 'Inter',
-              color: Color(0xff000000),
-              fontSize: 15,
-
-             ),),),
+            child: TextButton(
+              onPressed: () {},
+              child: const Text(
+                "Salvar",
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  color: Color(0xff000000),
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
           ),
 
-          const SizedBox(height: 25,)
-          
+          const SizedBox(height: 25),
         ],
       ),
 
-       bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         height: 64,
         color: const Color(0xffF5F5F5),
         child: Row(
@@ -125,7 +130,7 @@ class _FazerUploadState extends State<FazerUpload> {
             GestureDetector(
               onTap: () {},
               child: Ink.image(
-                image: const AssetImage('assets/images/bottom1.png'),
+                image: const AssetImage('assets/images/bottom4.png'),
                 fit: BoxFit.cover,
                 width: 59,
                 height: 49,
@@ -134,7 +139,7 @@ class _FazerUploadState extends State<FazerUpload> {
             GestureDetector(
               onTap: () {},
               child: Ink.image(
-                image: const AssetImage('assets/images/bottom2.png'),
+                image: const AssetImage('assets/images/bottom5.png'),
                 fit: BoxFit.cover,
                 width: 41,
                 height: 49,
@@ -153,7 +158,5 @@ class _FazerUploadState extends State<FazerUpload> {
         ),
       ),
     );
-
-    
   }
 }

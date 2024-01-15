@@ -84,6 +84,9 @@ flutter:
      - assets/images/bottom1.png
      - assets/images/bottom2.png
      - assets/images/bottom3.png
+     - assets/images/bottom4.png
+     - assets/images/bottom5.png
+     - assets/images/bottom6.png
      - assets/images/menos.png
      - assets/images/mais.png
      - assets/images/mesa_notificacao1.png

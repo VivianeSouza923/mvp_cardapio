@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvpcard/screens/adesivos.dart';
 import 'package:mvpcard/screens/fazer_upload_cardapio.dart';
 import 'package:mvpcard/screens/mesasocupadas_notificadas.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FazerUpload(),
+      home: AdesivosMesas(),
     );
   }
 }
