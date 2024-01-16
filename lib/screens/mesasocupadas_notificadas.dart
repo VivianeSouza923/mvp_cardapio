@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvpcard/functions/increment_decrement.dart';
+import 'package:mvpcard/screens/adesivos.dart';
+import 'package:mvpcard/screens/fazer_upload_cardapio.dart';
 
 import '../functions/add_mesa.dart';
 import '../functions/remover_mesas.dart';
@@ -61,12 +63,12 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                     ),
                     iconSize: 24,
                     onPressed: () {
-                      showModalBottomSheet(
+                      /* showModalBottomSheet(
                         context: context,
                         builder: (_) {
-                          return const RemoveTablesModal();
+                          return  RemoveTablesModal(contagemFinal: null,);
                         },
-                      );
+                      );*/
                     },
                   ),
                 ),
@@ -85,12 +87,12 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                     ),
                     iconSize: 14,
                     onPressed: () {
-                      showModalBottomSheet(
+                      /*showModalBottomSheet(
                         context: context,
                         builder: (_) {
                           return const AddTablesModal();
                         },
-                      );
+                      );*/
                     },
                   ),
                 ),
@@ -436,8 +438,15 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GestureDetector(
-              onTap: () {},
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FazerUpload(),
+                  ),
+                );
+              },
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom1.png'),
                 fit: BoxFit.cover,
@@ -445,7 +454,7 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                 height: 49,
               ),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom2.png'),
@@ -454,8 +463,17 @@ class _TotalMesasNotOcuState extends State<TotalMesasNotOcu> {
                 height: 49,
               ),
             ),
-            GestureDetector(
-              onTap: () {},
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdesivosMesas(
+                      count: 15,
+                    ),
+                  ),
+                );
+              },
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom3.png'),
                 fit: BoxFit.cover,

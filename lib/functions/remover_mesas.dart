@@ -109,7 +109,11 @@ class _RemoveTablesModalState extends State<RemoveTablesModal> {
               height: 48,
               margin: const EdgeInsets.only(bottom: 25),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+
+
+
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffFFB063)),
                 child: const Text(
@@ -127,4 +131,6 @@ class _RemoveTablesModalState extends State<RemoveTablesModal> {
       ),
     );
   }
+
+  
 }

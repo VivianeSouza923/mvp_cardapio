@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mvpcard/functions/increment_decrement.dart';
+import 'package:mvpcard/screens/adesivos.dart';
+import 'package:mvpcard/screens/fazer_upload_cardapio.dart';
 
 import '../functions/add_mesa.dart';
 import '../functions/remover_mesas.dart';
@@ -71,7 +73,7 @@ class _TotalMesasState extends State<TotalMesas> {
                       showModalBottomSheet(
                         context: context,
                         builder: (_) {
-                          return const RemoveTablesModal();
+                          return RemoveTablesModal();
                         },
                       );
                     },
@@ -210,8 +212,15 @@ class _TotalMesasState extends State<TotalMesas> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GestureDetector(
-              onTap: () {},
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FazerUpload(),
+                  ),
+                );
+              },
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom1.png'),
                 fit: BoxFit.cover,
@@ -219,7 +228,7 @@ class _TotalMesasState extends State<TotalMesas> {
                 height: 49,
               ),
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom2.png'),
@@ -228,8 +237,17 @@ class _TotalMesasState extends State<TotalMesas> {
                 height: 49,
               ),
             ),
-            GestureDetector(
-              onTap: () {},
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdesivosMesas(
+                      count: widget.contagemFinal,
+                    ),
+                  ),
+                );
+              },
               child: Ink.image(
                 image: const AssetImage('assets/images/bottom3.png'),
                 fit: BoxFit.cover,

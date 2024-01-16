@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mvpcard/screens/adesivos.dart';
 import 'package:mvpcard/screens/fazer_upload_cardapio.dart';
 import 'package:mvpcard/screens/mesasocupadas_notificadas.dart';
+import 'package:mvpcard/screens/nome_estabelecimento.dart';
+import 'package:mvpcard/screens/total_mesas.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AdesivosMesas(),
+      home: NomeEstabelecimento(),
     );
   }
 }

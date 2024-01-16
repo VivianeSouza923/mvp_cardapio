@@ -1,66 +1,115 @@
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
+import 'download_qrcode_page.dart';
+
+import 'package:mvpcard/widgets/widgets.dart';
+import 'package:mvpcard/shared/shared_var.dart';
+
 
 class AdesivosMesas extends StatefulWidget {
-  const AdesivosMesas({Key? key}) : super(key: key);
+  final int count;
+
+
+
+
+
+  const AdesivosMesas({Key? key, required this.count}) : super(key: key);
 
   @override
-  _AdesivosMesasState createState() => _AdesivosMesasState();
+  State<AdesivosMesas> createState() => _AdesivosMesasState();
 }
 
 class _AdesivosMesasState extends State<AdesivosMesas> {
-  bool isPdfUploaded = false; // Adicionado para rastrear o status do upload
+  final TextEditingController textQr = TextEditingController();
+  String textQrCodeScan = "";
+  List<Widget> buildAdesivos() {
+    List<Widget> adesivos = [];
+
+    for (int i = 1; i <= widget.count; i++) {
+      adesivos.add(
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DownloadQrCodePage(
+                  textQrCode: "CÓDIGO_QR_AQUI",
+                  count: i,
+                ),
+              ),
+            );
+            // ignore: avoid_print
+            print('Toque na mesa $i');
+          },
+          child: Stack(
+            children: [
+              Image.asset(
+                'assets/images/qr_table.png',
+                height: 95,
+                width: 95,
+              ),
+              Positioned(
+                top: 16,
+                left: 29,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '$i',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontFamily: 'Figtree',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.qr_code_scanner,
+                      color: Colors.white,
+                      size: 32,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return adesivos;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 30),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 153),
-            child: Text(
-              "Adesivos",
-              style: TextStyle(
-                fontFamily: 'FigTree',
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
-                letterSpacing: 0.36,
-                color: Color(0xff000000),
-              ),
-            ),
-          ),
-          const SizedBox(height: 131,),
-          
-       
-
-          const SizedBox(height: 38,),
-
-          Container(
-            width: 342,
-            height: 48,
-            decoration: BoxDecoration(
-              color: const Color(0xffFFB063),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextButton(
-              onPressed: () {},
-              child: const Text(
-                "Baixar QR Code de todas as mesas",
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  color: Color(0xff000000),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 24),
-        ],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          "Adesivos",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        elevation: 0,
       ),
-
+      body: Padding(
+        padding: const EdgeInsets.only(left: 15, right: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3,
+                children: buildAdesivos(),
+              ),
+            ),
+            DefaultButton(
+              onPressed: () {},
+              buttonText: "Baixar QR Code de todas as mesas",
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         height: 64,
         color: const Color(0xffF5F5F5),

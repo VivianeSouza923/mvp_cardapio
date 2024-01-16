@@ -10,6 +10,7 @@ class AddTablesModal extends StatefulWidget {
 class _AddTablesModalState extends State<AddTablesModal> {
   int count = 0;
 
+
   void decrement() {
     setState(() {
       count--;
@@ -109,7 +110,11 @@ class _AddTablesModalState extends State<AddTablesModal> {
               height: 48,
               margin: const EdgeInsets.only(bottom: 25),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+
+                  
+                
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffFFB063)),
                 child: const Text(
@@ -127,4 +132,8 @@ class _AddTablesModalState extends State<AddTablesModal> {
       ),
     );
   }
+  
+  
+
+ 
 }
